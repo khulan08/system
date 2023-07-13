@@ -11,7 +11,7 @@ if (isset($_POST['body'])) {
       // アップロードされたものが画像ではなかった場合
       header("HTTP/1.1 302 Found");
       header("Location: ./bbsimagetest.php");
-			return;
+		
     }
 
     // 元のファイル名から拡張子を取得
@@ -41,12 +41,15 @@ if (isset($_POST['body'])) {
 $select_sth = $dbh->prepare('SELECT * FROM bbs_entries ORDER BY created_at DESC');
 $select_sth->execute();
 ?>
+<head>
+  <title>画像投稿できる掲示板</title>
+</head>
 
 <!-- フォームのPOST先はこのファイル自身にする -->
 <form method="POST" action="./bbsimagetest.php" enctype="multipart/form-data">
   <textarea name="body"></textarea>
   <div style="margin: 1em 0;">
-    <input type="file" accept="image/*" name="image">
+    <input type="file" accept="image/*" name="image" id="imageInput">
   </div>
   <button type="submit">送信</button>
 </form>
