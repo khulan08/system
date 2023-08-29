@@ -55,7 +55,6 @@ $select_sth->bindParam(':count_per_page', $count_per_page, PDO::PARAM_INT);
 $select_sth->bindParam(':skip_count', $skip_count, PDO::PARAM_INT);
 $select_sth->execute();
 
-$exif = exif_read_data('./images/com.jpg');
 ?>
 
 <html style="">
@@ -66,7 +65,6 @@ $exif = exif_read_data('./images/com.jpg');
 <body style="font-size: 14px;">
 <h1 style="color: #1c6ea4;text-align: center;text-shadow: 2px 2px 2px black;">Web掲示板サービス</h1>
 <form method="POST" action="./bbs.php" enctype="multipart/form-data" style="margin: 2em; padding-bottom:2em;outline: 5px dotted #1c6ea4; outline-offset:0;border-radius:10px; text-align: center;">
-	<img src="./images/com.jpg" style="justify-content: start;"> <?= nl2br(print_r($exif, true)); ?>
 	<text style="font-weight: 700;font-size: 20px;">内容：</text><br>
 	<textarea name="body"></textarea>
   <div style="margin: 1em 0;">
