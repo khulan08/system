@@ -72,6 +72,19 @@ $select_sth->execute();
 		<input type="file" accept="image/*" name="image" id="imageInput" style="justify-content: center;">
   </div>
   <button type="submit" style="color:blue;font-weight: 700;font-size:20px; border-radius:10px;cursor:pointer;border: 2px solid; ">送信</button>
+<?php
+
+    $jQuery = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js";
+
+    ?>
+    <script src="<?php echo $jQuery; ?>"></script>
+    <script>
+        $(document).ready(function() {
+            $("button").click(function() {
+              	alert("送信できました。");
+            });
+        });
+    </script>
 </form>
 <div style="width: 100%; text-align: center; padding-bottom: 1em; border-bottom: 1px solid #ccc; margin-bottom: 0.5em">
   <?= $page ?>ページ目
