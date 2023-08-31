@@ -2,30 +2,28 @@
 $dbh = new PDO('mysql:host=mysql;dbname=techc', 'root', '');
 
 if (!isset($_GET['id'])) {
-  // URLクエリパラメータ id がない場合
-  return; // 処理終了
+  return; 
 }
-$id = intval($_GET['id']); // 表示したい投稿のID
+$id = intval($_GET['id']); 
 $select_sth = $dbh->prepare('SELECT * FROM bbs WHERE id = :id');
-// 文字列ではなく数値をプレースホルダにバインドする場合は bindParam()
 $select_sth->bindParam(':id', $id, PDO::PARAM_INT);
 $select_sth->execute();
 $entry = $select_sth->fetch();
 
 if (!$entry) {
-  // 投稿情報が取れなかった場合
-  return; // 終了
+  
+  return; 
 }
 ?>
 
-<a href="bbs.php">一覧に戻る</a>
+<a href="bbs.php" style="font-size:22px; ">一覧に戻る</a>
 
-<dl style="margin-bottom: 1em; padding-bottom: 1em; border-bottom: 1px solid #ccc;">
-  <dt>ID</dt>
+<dl style="margin: 2em; padding-bottom:2em; outline: 5px dotted #1c6ea4; outline-offset: 0px; border-radius: 5px; ">
+  <dt  style="font-weight:700;">ID</dt>
   <dd><?= $entry['id'] ?></dd>
-  <dt>日時</dt>
+  <dt  style="font-weight:700;">日時</dt>
   <dd><?= $entry['created_at'] ?></dd>
-  <dt>内容</dt>
+  <dt  style="font-weight:700;">内容</dt>
   <dd>
 		<?= nl2br(htmlspecialchars($entry['body']))  ?>
 		<?php if(!empty($entry['image_filename'])): ?>
